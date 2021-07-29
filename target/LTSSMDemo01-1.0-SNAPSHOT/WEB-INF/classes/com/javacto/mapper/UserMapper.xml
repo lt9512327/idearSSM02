@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--namespace ：命名空间，必需是接口全限定名-->
+<mapper namespace="com.javacto.mapper.UserMapper">
+    <!--这里面的代码希望大家自己去写-->
+
+    <!--查询所有-->
+    <select id="queryUserAll" resultType="com.javacto.po.User">
+        SELECT * FROM t_user
+    </select>
+
+    <!--根据id查询-->
+    <select id="findById" parameterType="_int" resultType="User">
+        SELECT * FROM TUSER WHERE uid=#{uid }
+    </select>
+
+    <!--添加用户-->
+    <insert id="insertUser" parameterType="com.javacto.po.User">
+        insert  into `t_user`(`uname`,`birthday`,`sex`,`address`)
+        values (#{uname},#{birthday},#{sex},#{address})
+    </insert>
+    <!--修改用户-->
+    <update id="updateUser" parameterType="com.javacto.po.User">
+        UPDATE  t_user SET address='刚修改' WHERE tid=#{uid}
+    </update>
+    <!--删除用户-->
+    <delete id="deleteUser" parameterType="int">
+        delete from  t_user WHERE tid=#{uid}
+    </delete>
+</mapper>
